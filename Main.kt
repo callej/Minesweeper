@@ -68,7 +68,7 @@ fun runGame(mines: Int): String {
                 mineField[y][x] == "X" -> { correctMarks++; showField[y][x] = "*" }
                 else -> { wrongMarks++; showField[y][x] = "*" }
             }
-        } else {
+        } else if (action == "free") {
             var mineFieldChanged = false
             while (firstFreeAction && mineField[y][x] == "X") {
                 mineField = addHints(gameInit(mines))
@@ -92,6 +92,8 @@ fun runGame(mines: Int): String {
                 Regex("\\d").matches(mineField[y][x]) -> showField[y][x] = mineField[y][x]
                 else -> wrongMarks += free(x, y, mineField, showField)
             }
+        } else {
+            continue
         }
         printField(showField)
     }

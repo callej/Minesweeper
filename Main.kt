@@ -46,7 +46,11 @@ fun printFailed(showField: List<MutableList<String>>, mineField: List<MutableLis
             if (mineField[row][col] == "X") showField[row][col] = "X"
         }
     }
-    printField(showField)
+    println("\n │123456789│\n—│—————————│")
+    for (row in 1..showField.size) {
+        println("$row|${showField[row - 1].joinToString("")}|")
+    }
+    println("—│—————————│")
 }
 
 fun runGame(mines: Int): String {
